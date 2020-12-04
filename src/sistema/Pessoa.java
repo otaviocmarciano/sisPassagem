@@ -15,6 +15,7 @@ import java.util.Date;
 public class Pessoa {
     private String nome;
     private String cpf;
+    private Conta conta;
     private Date dataDeNascimento;
     private Passaporte passaporte;
 
@@ -57,7 +58,9 @@ public class Pessoa {
         this.passaporte = passaporte;
     }
     
-    
+//    public boolean compraDebito(double valor, String local){
+//        this.conta.getCartao().compraDebito(local,valor,Conta);
+//   }
     
 
 }

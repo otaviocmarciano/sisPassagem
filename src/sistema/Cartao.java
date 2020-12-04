@@ -18,7 +18,11 @@ public class Cartao {
     private TipoCartao tipo;
     private double limite;
     private double limiteDisponivel;
-
+    
+    public Cartao() {
+  
+    }
+    
     public Cartao(Conta conta, String numero, TipoCartao tipo) {
         this.conta = conta;
         this.numero = numero;

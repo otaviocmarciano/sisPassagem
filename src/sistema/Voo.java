@@ -78,5 +78,9 @@ public class Voo {
         this.destino = destino;
     }
     
-
+    public void registraAssento(int linha, int coluna) {
+    	assentosVoo[linha][coluna] = new Assento(true, horaDeChegada);
+    	assentosVoo[linha][coluna].setPosicao(String.format("Assento %d%d", linha, coluna));
+    }
+    
 }

@@ -19,7 +19,7 @@ public abstract class Passagem {
     private String id;
     private Pessoa titular;
     private Assento assento;
-    private static List<String> ids = new ArrayList<>();
+    protected static List<String> ids = new ArrayList<>();
 
     public Passagem( Pessoa titular, Assento assento) {
        

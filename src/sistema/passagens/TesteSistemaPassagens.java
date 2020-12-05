@@ -2,9 +2,12 @@ package sistema.passagens;
 
 import java.util.Scanner;
 
-import sistema.Assento;
 import sistema.Cartao;
 import sistema.ContasTestes;
+import sistema.Passagem;
+import sistema.PassagemInteira;
+import sistema.PassagemMeia;
+import sistema.Pessoa;
 import sistema.Voo;
 
 public class TesteSistemaPassagens {
@@ -20,6 +23,7 @@ public class TesteSistemaPassagens {
 		 * 
 		 */
 	
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		ContasTestes contasTestes = new ContasTestes();
@@ -27,49 +31,90 @@ public class TesteSistemaPassagens {
 		RegistraVooTeste rvt = new RegistraVooTeste();
 		
 		//ESCOLHA DO VOO 
+		System.out.println("Escolha do Voo");
 		System.out.print("Voo: "); //no caso aeroporto
 		String vooEscolhido = sc.nextLine();
-		
-		System.out.println("Horario do voo: dd/MM/yyyy HH:MM:ss");
+		System.out.print("Horario do voo(dd/MM/yyyy HH:MM:ss): ");
 		String horario = sc.nextLine();
 		
+		System.out.println();
+		System.out.println("Quantidade de Assentos");
 		System.out.print("Inteiras: ");
 		int qtdInteira = sc.nextInt();
 		System.out.print("Meias: ");
 		int qtdMeia = sc.nextInt();
 		
 		int qtdPassagens = qtdInteira + qtdMeia;
-	
-		//horario voo SP: (2020, 12, 04, 15, 30, 00)  04/12/2020 15:30:00
-		System.out.println(horario);
 		
+		//ESCOLHA DO VOO
+		
+		//horario voo SP: (2020, 12, 04, 15, 30, 00)  04/12/2020 15:30:00
+		
+		//ESCOLHA DOS ASSENTOS
+		System.out.println();
+		System.out.println("Escolha dos Assentos");
 		for (Voo voo : rvt.voos) {
 			if(vooEscolhido.equals(voo.getDestino().getNome()) && horario.equals(voo.getHoraDeSaida())) {
-				System.out.println("Deu Certo");
 				
+				for(int i = 0 ; i < qtdPassagens ;i++) {
+					System.out.print("Assento([linha][coluna]): ");
+					int linha = sc.nextInt();
+					int coluna = sc.nextInt();
+					sc.nextLine();
+					if(voo.getAssentosVoo()[linha][coluna] == null) {
+						System.out.println("Assento desocupado! ");
+						voo.registraAssento(linha, coluna);
+					} else {
+						System.out.println("Assento ocupado! ");
+					}
+			
+					PassagemInteira pI = new PassagemInteira(null, null);
+					pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
+					//String nome, String cpf, Date dataDeNascimento, Passaporte passaporte
+					Pessoa pessoa = new Pessoa(horario, horario, null, null);
+					
+					System.out.println("Registro de Passagens: ");
+					System.out.println("Passagem ID: " + pI.getId() + " - Assento " + linha + "." + coluna);
+					System.out.print("Nome: ");
+					String nome = sc.nextLine();
+					System.out.print("CPF: ");
+					String cpf = sc.nextLine();
+					System.out.print("Data de Nascimento(dd/MM/yyyy): ");
+					@SuppressWarnings("unused")
+					String data = sc.nextLine();
+					System.out.print("Numero do passaporte: ");
+					String numPassaporte = sc.nextLine();
+					
+					
+					//A Pessoa tem que ter registro
+					for (Pessoa pessoas : contasTestes.pessoas) {
+						
+						if(nome.equals(pessoas.getConta().getNomeTitular()) && cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {	
+							System.out.println("Registro bem sucedido!");
+						} else {
+							System.out.println("O registro deu errado!");
+						}
+					}
+					
+					System.out.println();
+				}
 				
-//				for(int i = 0; i < voo.getAssentosVoo().length ; i++) {
-//					System.out.println("linha");
-//					for(int j = 0; j < voo.getAssentosVoo()[i].length ; j++) {
-//						System.out.println("coluna");
-//					}
-//				}
 				
 			} else {
 				System.out.println("Nao deu certo");
 			}
-			
-			//System.out.println(voo.getDestino().getNome());
 		}
-		//ESCOLHA DO VOO
+		//ESCOLHA DOS ASSENTOS
+		
 		
 		//PAGAMENTO
-		System.out.print("Pagamento cartao: CRED/DEB ");
+		System.out.print("Pagamento cartao(CRED/DEB): ");
+		sc.nextLine();
 		String tipoPagamento = sc.nextLine();
 		
 		if(tipoPagamento.equals("CRED")) {
 			System.out.println("PAGAMENTO NO CREDITO!");
-			System.out.print("Nome do Titular : ");
+			System.out.print("Nome do Titular: ");
 			String nomeTitular = sc.nextLine();
 			
 			for (Cartao cartao: contasTestes.cartoesCredito) {
@@ -127,9 +172,6 @@ public class TesteSistemaPassagens {
 			}	
 		}
 		
-		System.out.println("Escolha dos assentos: [linha][coluna]");
-		int i = sc.nextInt();
-		int j = sc.nextInt();
 		
 		
 	}

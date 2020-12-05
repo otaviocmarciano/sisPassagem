@@ -67,7 +67,8 @@ public class TesteSistemaPassagens {
 					} else {
 						System.out.println("Assento ocupado! ");
 					}
-			
+					
+					System.out.println();
 					PassagemInteira pI = new PassagemInteira(null, null);
 					pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
 					//String nome, String cpf, Date dataDeNascimento, Passaporte passaporte
@@ -89,14 +90,12 @@ public class TesteSistemaPassagens {
 					//A Pessoa tem que ter registro
 					for (Pessoa pessoas : contasTestes.pessoas) {
 						
-						if(nome.equals(pessoas.getConta().getNomeTitular()) && cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {	
+						if(cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {	
 							System.out.println("Registro bem sucedido!");
 						} else {
 							System.out.println("O registro deu errado!");
 						}
 					}
-					
-					System.out.println();
 				}
 				
 				
@@ -108,8 +107,8 @@ public class TesteSistemaPassagens {
 		
 		
 		//PAGAMENTO
+		System.out.println();
 		System.out.print("Pagamento cartao(CRED/DEB): ");
-		sc.nextLine();
 		String tipoPagamento = sc.nextLine();
 		
 		if(tipoPagamento.equals("CRED")) {
@@ -166,12 +165,9 @@ public class TesteSistemaPassagens {
 				} else {
 					System.out.println("erro");
 				}
-			//PAGAMENTO
-				
-				
 			}	
 		}
-		
+		//PAGAMENTO
 		
 		
 	}

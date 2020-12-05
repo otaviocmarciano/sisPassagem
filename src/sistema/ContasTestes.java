@@ -11,6 +11,9 @@ public class ContasTestes {
 	public Cartao credAna = new Cartao();
 	public Cartao debAna = new Cartao();
 	
+	public Pessoa filhoAna = new Pessoa();
+	public Passaporte passaporteFilhoAna = new Passaporte();
+	
 	public Conta contaJoao = new Conta();
 	public Cartao cartaoJoao = new Cartao();
 	
@@ -57,8 +60,15 @@ public class ContasTestes {
 		debAna.setLimiteDisponivel(2000.0);
 		debAna.setSenha(12345);
 		cartoesDebito.add(debAna);
-
 		
+		passaporteFilhoAna.setNumPassaporte("11");
+		passaporteFilhoAna.setPaisEmissor("Brasil");
+		passaporteFilhoAna.setStatusPassaporte(true);
+		
+		filhoAna.setNome("Joaozinho");
+		filhoAna.setPassaporte(passaporteFilhoAna);
+		filhoAna.setCpf("33333");
+		pessoas.add(filhoAna);
 		
 		contaJoao.setNomeTitular("Joao Otavio");
 		contaJoao.setNumero(135465);

@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 import sistema.Cartao;
 import sistema.ContasTestes;
-import sistema.Passagem;
 import sistema.PassagemInteira;
-import sistema.PassagemMeia;
 import sistema.Pessoa;
 import sistema.Voo;
 
@@ -71,11 +69,10 @@ public class TesteSistemaPassagens {
 					System.out.println();
 					PassagemInteira pI = new PassagemInteira(null, null);
 					pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
-					//String nome, String cpf, Date dataDeNascimento, Passaporte passaporte
-					Pessoa pessoa = new Pessoa(horario, horario, null, null);
+	
 					
 					System.out.println("Registro de Passagens: ");
-					System.out.println("Passagem ID: " + pI.getId() + " - Assento " + linha + "." + coluna);
+					System.out.println("Passagem ID: " + pI.getId() + " - Assento " + pI.getAssento().getPosicao());
 					System.out.print("Nome: ");
 					String nome = sc.nextLine();
 					System.out.print("CPF: ");
@@ -91,10 +88,17 @@ public class TesteSistemaPassagens {
 					for (Pessoa pessoas : contasTestes.pessoas) {
 						
 						if(cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {	
+							pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
+							pI.setTitular(pessoas);
+							pI.setVoo(voo);
+							
+							
 							System.out.println("Registro bem sucedido!");
-						} else {
-							System.out.println("O registro deu errado!");
-						}
+							System.out.println();
+							System.out.println(pI);
+							
+							
+						} 
 					}
 				}
 				
@@ -168,6 +172,8 @@ public class TesteSistemaPassagens {
 			}	
 		}
 		//PAGAMENTO
+		
+		
 		
 		
 	}

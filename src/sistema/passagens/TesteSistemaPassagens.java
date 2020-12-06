@@ -70,7 +70,6 @@ public class TesteSistemaPassagens {
 					PassagemInteira pI = new PassagemInteira(null, null);
 					pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
 	
-					
 					System.out.println("Registro de Passagens: ");
 					System.out.println("Passagem ID: " + pI.getId() + " - Assento " + pI.getAssento().getPosicao());
 					System.out.print("Nome: ");
@@ -83,32 +82,25 @@ public class TesteSistemaPassagens {
 					System.out.print("Numero do passaporte: ");
 					String numPassaporte = sc.nextLine();
 					
-					
 					//A Pessoa tem que ter registro
 					for (Pessoa pessoas : contasTestes.pessoas) {
-						
 						if(cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {	
 							pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
 							pI.setTitular(pessoas);
 							pI.setVoo(voo);
-							
-							
+				
 							System.out.println("Registro bem sucedido!");
 							System.out.println();
 							System.out.println(pI);
-							
-							
+						
 						} 
 					}
 				}
-				
-				
 			} else {
 				System.out.println("Nao deu certo");
 			}
 		}
 		//ESCOLHA DOS ASSENTOS
-		
 		
 		//PAGAMENTO
 		System.out.println();
@@ -178,7 +170,4 @@ public class TesteSistemaPassagens {
 		
 	}
 }
-		//LocalDateTime.of(ano, mes, dia, horas, minutos).format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-		
-
 

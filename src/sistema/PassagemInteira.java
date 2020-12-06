@@ -20,7 +20,8 @@ public class PassagemInteira extends Passagem{
     }
 
    
-    public void defineValor() {
+    public double defineValor() {
+		return cobraTaxaKm();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

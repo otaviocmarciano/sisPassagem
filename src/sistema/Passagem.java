@@ -94,6 +94,18 @@ public class Passagem {
 		this.voo = voo;
 	}
 
+	public double calculaDistancia(){
+		return DistanciaCidades.calcula(voo.getParadas().get(0).getCodigo().getLatitude(),
+								voo.getParadas().get(0).getCodigo().getLongitude(),
+								voo.getDestino().getCodigo().getLatitude(),
+								voo.getDestino().getCodigo().getLongitude());
+	}
+
+	public double cobraTaxaKm() {
+		double distancia = calculaDistancia();
+		return (distancia < 1000) ? (distancia * 0.3) : (distancia * 0.7);
+	}
+
 	@Override
     public String toString() {
     	return String.format("------ Passagem ------%n")

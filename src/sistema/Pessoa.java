@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 import java.time.LocalDateTime;
@@ -14,23 +13,25 @@ import java.util.Date;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Pessoa {
+
     private String nome;
     private String cpf;
     private Conta conta;
     private LocalDateTime dataDeNascimento;
     private Passaporte passaporte;
-    
+
     public Pessoa() {
-		// TODO Auto-generated constructor stub
-	}
-    
+
+    }
+
     public Pessoa(String nome, String cpf, LocalDateTime dataDeNascimento, Passaporte passaporte) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
         this.passaporte = passaporte;
     }
-    public boolean verificaCrianca(){
+
+    public boolean verificaCrianca() {
         return LocalDateTime.now().getYear() - dataDeNascimento.getYear() <= 6;
     }
 
@@ -58,7 +59,6 @@ public class Pessoa {
         this.dataDeNascimento = dataDeNascimento;
     }
 
- 
     public Passaporte getPassaporte() {
         return passaporte;
     }
@@ -67,17 +67,15 @@ public class Pessoa {
         this.passaporte = passaporte;
     }
 
-	public Conta getConta() {
-		return conta;
-	}
+    public Conta getConta() {
+        return conta;
+    }
 
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-    
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+
 //    public boolean compraDebito(double valor, String local){
 //        this.conta.getCartao().compraDebito(local,valor,Conta);
 //   }
-    
-
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 /**
@@ -11,14 +10,15 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Passaporte {
+
     private String paisEmissor;
     private String numPassaporte;
     private boolean statusPassaporte;
-    
+
     public Passaporte() {
-		// TODO Auto-generated constructor stub
-	}
-    
+
+    }
+
     public Passaporte(String paisEmissor, String numPassaporte, boolean statusPassaporte) {
         this.paisEmissor = paisEmissor;
         this.numPassaporte = numPassaporte;
@@ -48,5 +48,5 @@ public class Passaporte {
     public void setStatusPassaporte(boolean statusPassaporte) {
         this.statusPassaporte = statusPassaporte;
     }
-    
+
 }

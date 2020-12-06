@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import java.util.List;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Conta {
+
     private String nomeTitular;
     private int numero;
     private String tipo;
@@ -21,9 +21,9 @@ public class Conta {
     private Cartao cartao;
 
     private List<String> compras = new ArrayList<>();
-    
+
     public Conta() {
-    	
+
     }
 
     public Conta(String nomeTitular, int numero, String tipo, double saldo) {
@@ -31,13 +31,13 @@ public class Conta {
         this.numero = numero;
         this.tipo = tipo;
         this.saldo = saldo;
-       
-        
+
     }
-    public boolean realizaCompra(String local, double valor){
-        if(valor<this.saldo){
+
+    public boolean realizaCompra(String local, double valor) {
+        if (valor < this.saldo) {
             saldo -= valor;
-            compras.add(String.format("[Local realizado a compra:%s - Valor:R$%,.2f", local,valor));
+            compras.add(String.format("[Local realizado a compra:%s - Valor:R$%,.2f", local, valor));
             return true;
         }
         return false;
@@ -74,15 +74,13 @@ public class Conta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-	public Cartao getCartao() {
-		return cartao;
-	}
-	public void setCartao(Cartao cartao) {
-		this.cartao = cartao;
-	}
 
-   
-    
-    
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
 
 }

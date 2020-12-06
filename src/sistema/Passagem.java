@@ -22,23 +22,28 @@ public class Passagem {
     private Voo voo;
     protected static List<String> ids = new ArrayList<>();
 
-    public Passagem( Pessoa titular, Assento assento) {
-       
+    public Passagem(Pessoa titular, Assento assento) {
 
         this.titular = titular;
         this.assento = assento;
         this.id = geraId();
     }
 
+    public double defineValor() {
+        return 0;
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
     @SuppressWarnings("unused")
-	private String geraId() {
+    private String geraId() {
         Random r = new Random();
         String codigo;
         String letra1, letra2;
         String[] a = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         int n1, n2;
-        
-        n: for (;;) {
+
+        n:
+        for (;;) {
             n1 = r.nextInt(9);
             n2 = r.nextInt(9);
             letra1 = a[r.nextInt(25)];
@@ -51,8 +56,6 @@ public class Passagem {
             }
         }
     }
-
-    
 
     public double getValor() {
         return valor;
@@ -85,35 +88,35 @@ public class Passagem {
     public void setAssento(Assento assento) {
         this.assento = assento;
     }
-    
+
     public Voo getVoo() {
-		return voo;
-	}
+        return voo;
+    }
 
-	public void setVoo(Voo voo) {
-		this.voo = voo;
-	}
+    public void setVoo(Voo voo) {
+        this.voo = voo;
+    }
 
-	public double calculaDistancia(){
-		return DistanciaCidades.calcula(voo.getParadas().get(0).getCodigo().getLatitude(),
-								voo.getParadas().get(0).getCodigo().getLongitude(),
-								voo.getDestino().getCodigo().getLatitude(),
-								voo.getDestino().getCodigo().getLongitude());
-	}
+    public double calculaDistancia() {
+        return DistanciaCidades.calcula(voo.getPartida().getCodigo().getLatitude(),
+                voo.getPartida().getCodigo().getLongitude(),
+                voo.getDestino().getCodigo().getLatitude(),
+                voo.getDestino().getCodigo().getLongitude());
+    }
 
-	public double cobraTaxaKm() {
-		double distancia = calculaDistancia();
-		return (distancia < 1000) ? (distancia * 0.3) : (distancia * 0.7);
-	}
+    public double cobraTaxaKm() {
+        double distancia = calculaDistancia();
+        return (distancia < 1000) ? (distancia * 0.3) : (distancia * 0.7);
+    }
 
-	@Override
+    @Override
     public String toString() {
-    	return String.format("------ Passagem ------%n")
-    			+ String.format("Passagem ID: %s - Assento %s%n",this.getId(), this.getAssento().getPosicao())
-    			+ String.format("Nome do Titular: %s %n", this.getTitular().getNome())
-    			+ String.format("CPF: %s%n", this.getTitular().getCpf())
-    			+ String.format("Numero do Passaporte: %s%n", this.getTitular().getPassaporte().getNumPassaporte())
-    			+ String.format("Voo: %s", this.voo.getDestino().getEstado() + " - " + this.voo.getDestino().getNome());
-    			
+        return String.format("------ Passagem ------%n")
+                + String.format("Passagem ID: %s - Assento %s%n", this.getId(), this.getAssento().getPosicao())
+                + String.format("Nome do Titular: %s %n", this.getTitular().getNome())
+                + String.format("CPF: %s%n", this.getTitular().getCpf())
+                + String.format("Numero do Passaporte: %s%n", this.getTitular().getPassaporte().getNumPassaporte())
+                + String.format("Voo: %s", this.voo.getDestino().getEstado() + " - " + this.voo.getDestino().getNome());
+
     }
 }

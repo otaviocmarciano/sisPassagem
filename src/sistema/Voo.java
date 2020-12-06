@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 import java.time.LocalDateTime;
@@ -14,22 +13,32 @@ import java.util.List;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Voo {
+
     private Assento assentosVoo[][];
     private Aviao aviao;
     private String horaDeSaida;
     private String horaDeChegada;
     private List<Cidade> paradas;
     private Cidade destino;
+    private Cidade partida;
 
-    public Voo(Assento[][] assentosVoo, Aviao aviao, String horaDeSaida, String horaDeChegada, List<Cidade> paradas, Cidade destino) {
+    public Cidade getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Cidade partida) {
+        this.partida = partida;
+    }
+
+    public Voo(Assento[][] assentosVoo, Aviao aviao, String horaDeSaida, String horaDeChegada, List<Cidade> paradas, Cidade destino, Cidade partida) {
         this.assentosVoo = assentosVoo;
         this.aviao = aviao;
         this.horaDeSaida = horaDeSaida;
         this.horaDeChegada = horaDeChegada;
         this.paradas = paradas;
         this.destino = destino;
+        this.partida = partida;
     }
-    
 
     public Assento[][] getAssentosVoo() {
         return assentosVoo;
@@ -78,10 +87,10 @@ public class Voo {
     public void setDestino(Cidade destino) {
         this.destino = destino;
     }
-    
+
     public void registraAssento(int linha, int coluna) {
-    	assentosVoo[linha][coluna] = new Assento(true, horaDeChegada);
-    	assentosVoo[linha][coluna].setPosicao(String.format("Assento %d.%d", linha, coluna));
+        assentosVoo[linha][coluna] = new Assento(true, horaDeChegada);
+        assentosVoo[linha][coluna].setPosicao(String.format("Assento %d.%d", linha, coluna));
     }
-    
+
 }

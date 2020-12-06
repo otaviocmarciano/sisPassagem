@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 /**
@@ -11,6 +10,7 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Aviao {
+
     private String modelo;
     private int quantidadeDeAssentos;
 
@@ -34,5 +34,5 @@ public class Aviao {
     public void setQuantidadeDeAssentos(int quantidadeDeAssentos) {
         this.quantidadeDeAssentos = quantidadeDeAssentos;
     }
-    
+
 }

@@ -1,6 +1,8 @@
 package sistema.passagens;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -18,15 +20,8 @@ public class TesteSistemaPassagens {
 
     @SuppressWarnings("unlikely-arg-type")
     public static void main(String[] args) {
-        /*Uma mulher ir� tentar realizar uma compra de passagens
-		 * de Goi�nia para S�o Paulo, junto com seu filho de 10 anos.
-		 * A data de ida � 05/12/2020 e a data de volta � dia 12/12/2020.
-		 * 
-		 * Nome : Ana
-		 * Filho : Gustavo
-		 * 
-         */
-
+        List<Passagem> passagensCompra = new ArrayList<>();
+     
         @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
 
@@ -36,21 +31,20 @@ public class TesteSistemaPassagens {
 
         //ESCOLHA DO VOO 
         System.out.println("Escolha do Voo");
-        String men  = String.format("[Lista de Voos]", "");
+        String men = String.format("[Lista de Voos]", "");
         for (Voo voo : rvt.voos) {
-            men = String.format("Voo: %d - Destino:[%s - %s]\nHorario Partida:[%s] - Horario de Chegada:[%s]\n",rvt.voos.indexOf(voo), voo.getDestino().getNome(),voo.getDestino().getEstado(),voo.getHoraDeSaida(),voo.getHoraDeChegada());
+            men = String.format("Voo: %d - Destino:[%s - %s]\nHorario Partida:[%s] - Horario de Chegada:[%s]\n", rvt.voos.indexOf(voo), voo.getDestino().getNome(), voo.getDestino().getEstado(), voo.getHoraDeSaida(), voo.getHoraDeChegada());
             men += "\n[Paradas]\n";
             for (Cidade parada : voo.getParadas()) {
-                men+= String.format("Cidade: [%s - %s]\n",parada.getNome(),parada.getEstado());
-                
+                men += String.format("Cidade: [%s - %s]\n", parada.getNome(), parada.getEstado());
+
             }
-            men +="------------------------------------------------------------------------------------------";
+            men += "------------------------------------------------------------------------------------------";
         }
         System.out.println(men);
-        
+
         System.out.print("Voo: "); //no caso aeroporto
         int vooEscolhido = sc.nextInt();
-   
 
         System.out.println();
         System.out.println("Quantidade de Assentos");
@@ -62,7 +56,7 @@ public class TesteSistemaPassagens {
         int qtdPassagens = qtdInteira + qtdMeia;
 
         //ESCOLHA DO VOO
-        //horario voo SP: (2020, 12, 04, 15, 30, 00)  04/12/2020 15:30:00
+        
         //ESCOLHA DOS ASSENTOS
         System.out.println();
         System.out.println("Escolha dos Assentos");
@@ -70,20 +64,20 @@ public class TesteSistemaPassagens {
             String ma = String.format("Assentos:\n", "");
             if (vooEscolhido == rvt.voos.indexOf(voo)) {
                 for (int i = 0; i < voo.getAssentosVoo().length; i++) {
-                    ma+=String.format("%4s",i+" - ");
+                    ma += String.format("%4s", i + " - ");
                     for (int j = 0; j < voo.getAssentosVoo()[i].length; j++) {
-                        
-                        if(!voo.getAssentosVoo()[i][j].getStatus()){
-                           ma+=String.format("%4s", "[V]"); 
-                        }else{
-                            ma+=String.format("%4s","[X]"); 
+
+                        if (!voo.getAssentosVoo()[i][j].getStatus()) {
+                            ma += String.format("%4s", "[V]");
+                        } else {
+                            ma += String.format("%4s", "[X]");
                         }
                     }
-                    ma+=String.format("\n", "");
+                    ma += String.format("\n", "");
                 }
-                ma+=String.format("%4s", "");
-                for (int i = 0; i < voo.getAssentosVoo()[0].length ; i++) {
-                   ma+=String.format("%4s", i);
+                ma += String.format("%4s", "");
+                for (int i = 0; i < voo.getAssentosVoo()[0].length; i++) {
+                    ma += String.format("%4s", i);
                 }
                 System.out.print(ma);
 
@@ -104,37 +98,36 @@ public class TesteSistemaPassagens {
                     Passagem pI = new Passagem(null, null);
 
                     System.out.println("Registro de Passagens: ");
-//                    System.out.println("Passagem ID: " + pI.getId() + " - Assento " + pI.getAssento().getPosicao());
 
                     System.out.print("CPF: ");
                     String cpf = sc.nextLine();
                     System.out.print("Numero do passaporte: ");
                     String numPassaporte = sc.nextLine();
-                    if(!contasTestes.pessoaExiste(cpf)){
+                    if (!contasTestes.pessoaExiste(cpf)) {
                         String nnome = JOptionPane.showInputDialog("Digite Seu nome");
-                        int nano= Integer.parseInt(JOptionPane.showInputDialog("Insira o seu ano de nascimento"));
+                        int nano = Integer.parseInt(JOptionPane.showInputDialog("Insira o seu ano de nascimento"));
                         int nmes = Integer.parseInt(JOptionPane.showInputDialog("Insira o seu mes de nascimento"));
-                        int ndia = Integer.parseInt(JOptionPane.showInputDialog("Insira o seu dia de nascimento")); 
-                        LocalDateTime dataN = LocalDateTime.of(nano, nmes, ndia,0,0,0);
-                        
+                        int ndia = Integer.parseInt(JOptionPane.showInputDialog("Insira o seu dia de nascimento"));
+                        LocalDateTime dataN = LocalDateTime.of(nano, nmes, ndia, 0, 0, 0);
+
                         contasTestes.inserePessoa(new Pessoa(nnome, cpf, dataN, new Passaporte(JOptionPane.showInputDialog("Pais Emissor do passaporte"), numPassaporte, true)));
                     }
 
-                    
                     System.out.print("Meia[S/N]: ");
                     String m = sc.nextLine();
 
-                    //A Pessoa tem que ter registro
-                    for (Pessoa pessoas : contasTestes.pessoas) {
-                        if (cpf.equals(pessoas.getCpf()) && numPassaporte.equals(pessoas.getPassaporte().getNumPassaporte())) {
+                   
+                    for (Pessoa pessoa : contasTestes.pessoas) {
+                        if (cpf.equals(pessoa.getCpf()) && numPassaporte.equals(pessoa.getPassaporte().getNumPassaporte())) {
                             if ((m.equals("S") || m.equals("s"))) {
-                                if (pessoas.verificaCrianca()) {
+                                if (pessoa.verificaCrianca()) {
                                     pI = new PassagemMeia(null, null);
                                     pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
-                                    pI.setTitular(pessoas);
+                                    pI.setTitular(pessoa);
                                     pI.setVoo(voo);
                                     System.out.println("Registro bem sucedido!");
                                     System.out.println();
+                                    passagensCompra.add(pI);
                                     System.out.println(pI);
 
                                 } else {
@@ -145,10 +138,11 @@ public class TesteSistemaPassagens {
                             } else {
                                 pI = new PassagemInteira(null, null);
                                 pI.setAssento(voo.getAssentosVoo()[linha][coluna]);
-                                pI.setTitular(pessoas);
+                                pI.setTitular(pessoa);
                                 pI.setVoo(voo);
                                 System.out.println("Registro bem sucedido!");
                                 System.out.println();
+                                passagensCompra.add(pI);
                                 System.out.println(pI);
                             }
 
@@ -174,16 +168,24 @@ public class TesteSistemaPassagens {
             for (Cartao cartao : contasTestes.cartoesCredito) {
                 String nome = cartao.getConta().getNomeTitular();
                 if (nome.equals(nomeTitular)) {
-                    System.out.print("Valor da Passagem: ");
-                    double valor = sc.nextDouble(); //vai depender do Voo
+
+                    double valor = 0;//vai depender do Voo
+                    for (Passagem passagem : passagensCompra) {
+                        valor += passagem.defineValor();
+                    }
+
                     System.out.print("Numero do cartao: ");
                     int numeroCartao = sc.nextInt();
                     System.out.print("Digite a senha: ");
                     int senha = sc.nextInt();
                     String local = "Aeroporto de Goiania";
 
-                    valor = valor * qtdInteira + valor * qtdMeia / 2;
+                    System.out.println("-----------------------------------------------------");
+
                     if (cartao.autentica(nome, numeroCartao, senha)) {
+                        for (Passagem passagem : passagensCompra) {
+                            System.out.println(passagem);
+                        }
                         cartao.compraCredito(nome, numeroCartao, valor, local);
                     } else {
                         System.out.println("Dados Invalidos!");
@@ -202,17 +204,25 @@ public class TesteSistemaPassagens {
             for (Cartao cartao : contasTestes.cartoesDebito) {
                 String nome = cartao.getConta().getNomeTitular();
                 if (nome.equals(nomeTitular)) {
-                    System.out.print("Valor da Passagem: ");
-                    double valor = sc.nextDouble(); //vai depender do Voo
+
+                    double valor = 0; //vai depender do Voo
+                    //vai depender do Voo
+                    for (Passagem passagem : passagensCompra) {
+                        valor += passagem.defineValor();
+                    }
                     System.out.print("Numero do cartao: ");
                     int numeroCartao = sc.nextInt();
                     System.out.print("Digite a senha: ");
                     int senha = sc.nextInt();
                     String local = "Aeroporto de Goiania";
+                    System.out.println("-----------------------------------------------------");
 
-                    valor = valor * qtdInteira + valor * qtdMeia / 2;
                     if (cartao.autentica(nome, numeroCartao, senha)) {
+                        for (Passagem passagem : passagensCompra) {
+                            System.out.println(passagem);
+                        }
                         cartao.compraDebito(valor, local);
+
                     } else {
                         System.out.println("Dados Invalidos!");
                     }
@@ -221,6 +231,7 @@ public class TesteSistemaPassagens {
                     System.out.println("erro");
                 }
             }
+
         }
         //PAGAMENTO
 

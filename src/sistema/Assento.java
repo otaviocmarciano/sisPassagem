@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 /**
@@ -11,6 +10,7 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Assento {
+
     private boolean status = false;
     private String posicao;
 
@@ -20,15 +20,17 @@ public class Assento {
     }
 
     public String isStatus() {
-    	if(status == true) {
-    		return "Assento ocupado!";
-    	} else {
-    		return "Assento desocupado!";
-    	}
+        if (status == true) {
+            return "Assento ocupado!";
+        } else {
+            return "Assento desocupado!";
+        }
     }
-    public boolean getStatus(){
+
+    public boolean getStatus() {
         return this.status;
     }
+
     public void setStatus(boolean status) {
         this.status = status;
     }
@@ -40,6 +42,5 @@ public class Assento {
     public void setPosicao(String posicao) {
         this.posicao = posicao;
     }
-    
-    
+
 }

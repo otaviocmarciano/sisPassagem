@@ -11,7 +11,7 @@ package sistema;
  */
 public enum TipoCartao {
     DEB("Débito"), CRED("Crédito");
-    
+
     private final String tipo;
 
     TipoCartao(String tipo) {
@@ -21,8 +21,5 @@ public enum TipoCartao {
     public String getTipo() {
         return tipo;
     }
-    
-    
-    
-    
+
 }

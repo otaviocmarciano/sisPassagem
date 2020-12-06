@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistema;
 
 /**
@@ -11,6 +10,7 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Cidade {
+
     private String nome;
     private String estado;
     private CodigoIATA codigo;
@@ -44,6 +44,5 @@ public class Cidade {
     public void setCodigo(CodigoIATA codigo) {
         this.codigo = codigo;
     }
-    
 
 }

@@ -14,7 +14,11 @@ public class Passaporte {
     private String paisEmissor;
     private String numPassaporte;
     private boolean statusPassaporte;
-
+    
+    public Passaporte() {
+		// TODO Auto-generated constructor stub
+	}
+    
     public Passaporte(String paisEmissor, String numPassaporte, boolean statusPassaporte) {
         this.paisEmissor = paisEmissor;
         this.numPassaporte = numPassaporte;

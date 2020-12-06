@@ -11,7 +11,7 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class Assento {
-    private boolean status;
+    private boolean status = false;
     private String posicao;
 
     public Assento(boolean status, String posicao) {
@@ -19,8 +19,12 @@ public class Assento {
         this.posicao = posicao;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String isStatus() {
+    	if(status == true) {
+    		return "Assento ocupado!";
+    	} else {
+    		return "Assento desocupado!";
+    	}
     }
 
     public void setStatus(boolean status) {

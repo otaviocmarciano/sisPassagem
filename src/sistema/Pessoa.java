@@ -6,6 +6,7 @@
 
 package sistema;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -15,10 +16,15 @@ import java.util.Date;
 public class Pessoa {
     private String nome;
     private String cpf;
-    private Date dataDeNascimento;
+    private Conta conta;
+    private String dataDeNascimento;
     private Passaporte passaporte;
-
-    public Pessoa(String nome, String cpf, Date dataDeNascimento, Passaporte passaporte) {
+    
+    public Pessoa() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public Pessoa(String nome, String cpf, String dataDeNascimento, Passaporte passaporte) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
@@ -41,11 +47,11 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public Date getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 
@@ -56,8 +62,18 @@ public class Pessoa {
     public void setPassaporte(Passaporte passaporte) {
         this.passaporte = passaporte;
     }
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
     
-    
+//    public boolean compraDebito(double valor, String local){
+//        this.conta.getCartao().compraDebito(local,valor,Conta);
+//   }
     
 
 }

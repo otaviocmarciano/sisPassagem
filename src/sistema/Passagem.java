@@ -19,7 +19,8 @@ public abstract class Passagem {
     private String id;
     private Pessoa titular;
     private Assento assento;
-    private static List<String> ids = new ArrayList<>();
+    private Voo voo;
+    protected static List<String> ids = new ArrayList<>();
 
     public Passagem( Pessoa titular, Assento assento) {
        
@@ -29,14 +30,15 @@ public abstract class Passagem {
         this.id = geraId();
     }
 
-    private String geraId() {
+    @SuppressWarnings("unused")
+	private String geraId() {
         Random r = new Random();
         String codigo;
         String letra1, letra2;
         String[] a = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         int n1, n2;
-        n:
-        for (;;) {
+        
+        n: for (;;) {
             n1 = r.nextInt(9);
             n2 = r.nextInt(9);
             letra1 = a[r.nextInt(25)];
@@ -83,5 +85,23 @@ public abstract class Passagem {
     public void setAssento(Assento assento) {
         this.assento = assento;
     }
+    
+    public Voo getVoo() {
+		return voo;
+	}
 
+	public void setVoo(Voo voo) {
+		this.voo = voo;
+	}
+
+	@Override
+    public String toString() {
+    	return String.format("------ Passagem ------%n")
+    			+ String.format("Passagem ID: %s - Assento %s%n",this.getId(), this.getAssento().getPosicao())
+    			+ String.format("Nome do Titular: %s %n", this.getTitular().getNome())
+    			+ String.format("CPF: %s%n", this.getTitular().getCpf())
+    			+ String.format("Numero do Passaporte: %s%n", this.getTitular().getPassaporte().getNumPassaporte())
+    			+ String.format("Voo: %s", this.voo.getDestino().getEstado() + " - " + this.voo.getDestino().getNome());
+    			
+    }
 }

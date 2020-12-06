@@ -11,6 +11,9 @@ package sistema;
  * @author Otávio Camargo Marciano - 201900244
  */
 public class PassagemInteira extends Passagem{
+	
+	private static int qtdAdultos = 0;
+	public static int qtdCriancas = 0;
     
     public PassagemInteira( Pessoa titular, Assento assento) {
         super( titular, assento);
@@ -20,6 +23,14 @@ public class PassagemInteira extends Passagem{
     public void defineValor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+	public static int getQtdAdultos() {
+		return qtdAdultos;
+	}
+
+	public static void setQtdAdultos(int qtdAdultos) {
+		PassagemInteira.qtdAdultos = qtdAdultos;
+	}
     
 
 }

@@ -18,8 +18,13 @@ public class Conta {
     private int numero;
     private String tipo;
     private double saldo;
+    private Cartao cartao;
 
     private List<String> compras = new ArrayList<>();
+    
+    public Conta() {
+    	
+    }
 
     public Conta(String nomeTitular, int numero, String tipo, double saldo) {
         this.nomeTitular = nomeTitular;
@@ -69,6 +74,12 @@ public class Conta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+	public Cartao getCartao() {
+		return cartao;
+	}
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
+	}
 
    
     

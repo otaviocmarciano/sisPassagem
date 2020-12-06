@@ -16,12 +16,12 @@ import java.util.List;
 public class Voo {
     private Assento assentosVoo[][];
     private Aviao aviao;
-    private LocalDateTime horaDeSaida;
-    private LocalDateTime horaDeChegada;
+    private String horaDeSaida;
+    private String horaDeChegada;
     private List<Cidade> paradas;
     private Cidade destino;
 
-    public Voo(Assento[][] assentosVoo, Aviao aviao, LocalDateTime horaDeSaida, LocalDateTime horaDeChegada, List<Cidade> paradas, Cidade destino) {
+    public Voo(Assento[][] assentosVoo, Aviao aviao, String horaDeSaida, String horaDeChegada, List<Cidade> paradas, Cidade destino) {
         this.assentosVoo = assentosVoo;
         this.aviao = aviao;
         this.horaDeSaida = horaDeSaida;
@@ -46,19 +46,19 @@ public class Voo {
         this.aviao = aviao;
     }
 
-    public LocalDateTime getHoraDeSaida() {
+    public String getHoraDeSaida() {
         return horaDeSaida;
     }
 
-    public void setHoraDeSaida(LocalDateTime horaDeSaida) {
+    public void setHoraDeSaida(String horaDeSaida) {
         this.horaDeSaida = horaDeSaida;
     }
 
-    public LocalDateTime getHoraDeChegada() {
+    public String getHoraDeChegada() {
         return horaDeChegada;
     }
 
-    public void setHoraDeChegada(LocalDateTime horaDeChegada) {
+    public void setHoraDeChegada(String horaDeChegada) {
         this.horaDeChegada = horaDeChegada;
     }
 
@@ -78,5 +78,9 @@ public class Voo {
         this.destino = destino;
     }
     
-
+    public void registraAssento(int linha, int coluna) {
+    	assentosVoo[linha][coluna] = new Assento(true, horaDeChegada);
+    	assentosVoo[linha][coluna].setPosicao(String.format("Assento %d.%d", linha, coluna));
+    }
+    
 }

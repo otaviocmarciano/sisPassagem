@@ -29,6 +29,7 @@ public class Voo {
         this.paradas = paradas;
         this.destino = destino;
     }
+    
 
     public Assento[][] getAssentosVoo() {
         return assentosVoo;

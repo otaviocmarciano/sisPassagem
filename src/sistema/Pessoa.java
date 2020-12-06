@@ -17,18 +17,21 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private Conta conta;
-    private String dataDeNascimento;
+    private LocalDateTime dataDeNascimento;
     private Passaporte passaporte;
     
     public Pessoa() {
 		// TODO Auto-generated constructor stub
 	}
     
-    public Pessoa(String nome, String cpf, String dataDeNascimento, Passaporte passaporte) {
+    public Pessoa(String nome, String cpf, LocalDateTime dataDeNascimento, Passaporte passaporte) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
         this.passaporte = passaporte;
+    }
+    public boolean verificaCrianca(){
+        return LocalDateTime.now().getYear() - dataDeNascimento.getYear() <= 6;
     }
 
     public String getNome() {
@@ -47,14 +50,15 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getDataDeNascimento() {
+    public LocalDateTime getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(String dataDeNascimento) {
+    public void setDataDeNascimento(LocalDateTime dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 
+ 
     public Passaporte getPassaporte() {
         return passaporte;
     }

@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author Otávio Camargo Marciano - 201900244
  */
-public abstract class Passagem {
+public class Passagem {
 
     private double valor;
     private String id;
@@ -52,7 +52,7 @@ public abstract class Passagem {
         }
     }
 
-    public abstract void defineValor();
+    
 
     public double getValor() {
         return valor;

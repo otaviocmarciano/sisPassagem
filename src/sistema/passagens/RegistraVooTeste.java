@@ -18,7 +18,12 @@ public class RegistraVooTeste {
 
 	RegistraVooTeste(){
 		Assento[][] av = new Assento[10][20];
-		//String modelo, int quantidadeDeAssentos
+                for (int i = 0; i < av.length; i++) {
+                    for (int j = 0; j < av[i].length; j++) {
+                        av[i][j] = new Assento(false, "i j");
+                    }
+                }
+                //String modelo, int quantidadeDeAssentos
 		Aviao a1 = new Aviao("Boeing 737", 100);
 	
 		String horarioSaida = LocalDateTime.of(2020, 12, 04, 15, 30, 00).format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
@@ -28,7 +33,7 @@ public class RegistraVooTeste {
 		//String nome, String estado, CodigoIATA codigo
 		Cidade cidadeParada = new Cidade("Estado", "Cidade Qualquer", CodigoIATA.ZMD);
 		paradas.add(cidadeParada);
-		Cidade cidadeDestino = new Cidade("São Paulo", "Sao Paulo", CodigoIATA.SOD);
+		Cidade cidadeDestino = new Cidade("Sï¿½o Paulo", "Sao Paulo", CodigoIATA.SOD);
 	
 		Voo v1 = new Voo(av, a1, horarioSaida, horarioChegada, paradas, cidadeDestino);
 		

@@ -26,7 +26,9 @@ public class Assento {
     		return "Assento desocupado!";
     	}
     }
-
+    public boolean getStatus(){
+        return this.status;
+    }
     public void setStatus(boolean status) {
         this.status = status;
     }

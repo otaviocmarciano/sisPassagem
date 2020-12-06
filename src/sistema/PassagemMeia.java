@@ -18,7 +18,7 @@ public class PassagemMeia extends Passagem{
         super( titular, assento);
     }
 
-    @Override
+   
     public void defineValor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -8,124 +8,172 @@ package sistema;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe que representa um cartão.
+ * 
  * @author OtÃ¡vio Camargo Marciano - 201900244
  */
 public class Cartao {
 
-    private Conta conta;
-    private int numero;
-    private TipoCartao tipo;
-    private double limite;
-    private double limiteDisponivel; //limite disponivel para compra credito
-    private int senha;
+	private Conta conta;
+	private int numero;
+	private TipoCartao tipo;
+	private double limite;
+	private double limiteDisponivel; // limite disponivel para compra credito
+	private int senha;
 
-    public Cartao() {
+	/**
+	 * Construtor para incializar o objeto Cartao sem parâmetros.
+	 */
+	public Cartao() {
 
-    }
+	}
 
-    public Cartao(Conta conta, int numero, TipoCartao tipo) {
-        this.conta = conta;
-        this.numero = numero;
-        this.tipo = tipo;
-    }
+	/**
+	 * Construtor para inicializar o objeto Cartao a partir da conta, número e tipo.
+	 * 
+	 * @param conta
+	 * @param numero
+	 * @param tipo
+	 */
+	public Cartao(Conta conta, int numero, TipoCartao tipo) {
+		this.conta = conta;
+		this.numero = numero;
+		this.tipo = tipo;
+	}
 
-    public Cartao(Conta conta, int numero, TipoCartao tipo, double limite) {
-        if (this.tipo == TipoCartao.CRED) {
+	/**
+	 * Contrutor para inicializar o objeto a partir da conta, número, tipo e limite.
+	 * 
+	 * @param conta
+	 * @param numero
+	 * @param tipo
+	 * @param limite
+	 */
+	public Cartao(Conta conta, int numero, TipoCartao tipo, double limite) {
+		if (this.tipo == TipoCartao.CRED) {
 
-            this.conta = conta;
-            this.numero = numero;
-            this.tipo = tipo;
-            this.setLimite(limite);
-        } else {
-            JOptionPane.showMessageDialog(null, String.format("[CARTÃƒO DE DÃ‰BITO NÃƒO POSSUI O ATRIBUTO LIMITE]\n[UM CARTÃƒO DE DÃ‰BITO FOI CRIADO]", ""), "Aviso", 2);
-            this.conta = conta;
-            this.numero = numero;
-            this.tipo = TipoCartao.DEB;
-        }
+			this.conta = conta;
+			this.numero = numero;
+			this.tipo = tipo;
+			this.setLimite(limite);
+		} else {
+			JOptionPane.showMessageDialog(null,
+					String.format(
+							"[CARTÃƒO DE DÃ‰BITO NÃƒO POSSUI O ATRIBUTO LIMITE]\n[UM CARTÃƒO DE DÃ‰BITO FOI CRIADO]",
+							""),
+					"Aviso", 2);
+			this.conta = conta;
+			this.numero = numero;
+			this.tipo = TipoCartao.DEB;
+		}
 
-    }
+	}
 
-    public String getTipo() {
-        return tipo.getTipo();
-    }
+	/**
+	 * Método para realizar uma compra no débito a partir do valor e local.
+	 * 
+	 * @param valor
+	 * @param local
+	 * @return
+	 */
+	public boolean compraDebito(double valor, String local) {
 
-    public void setTipo(TipoCartao tipo) {
-        this.tipo = tipo;
-    }
+		if (conta.realizaCompra(local, valor)) {
+			String men = String.format("Valor das Passgens:R$%,.2f\n", valor);
+			System.out.println(men + "Compra bem sucedida!");
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "[SALDO INSUFICIENTE]", "Saldo insuficiente", 0);
+		}
+		return false;
+	}
 
-    public Conta getConta() {
-        return conta;
-    }
+	/**
+	 * Método para realiar uma compra no crédito a partir do titular, número, valor
+	 * e local.
+	 * 
+	 * @param titular
+	 * @param numero
+	 * @param valor
+	 * @param local
+	 * @return
+	 */
+	public boolean compraCredito(String titular, int numero, double valor, String local) {
 
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
+		if (limiteDisponivel >= valor) {
+			conta.realizaCompra(local, valor);
+			String men = String.format("Valor das Passgens:R$%,.2f\n", valor);
+			System.out.println(men + "Compra bem sucedida!");
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "[LIMITE ATINGIDO]", "Limite atingido", 0);
+			return false;
+		}
+	}
 
-    public int getNumero() {
-        return numero;
-    }
+	/**
+	 * Método para autenticar o Cartao a partir do titular, número e senha.
+	 * 
+	 * @param titular
+	 * @param numero
+	 * @param senha
+	 * @return
+	 */
+	public boolean autentica(String titular, int numero, int senha) {
+		if (this.senha == senha && this.numero == numero && this.conta.getNomeTitular() == titular) {
+			return true;
+		} else {
+			System.out.println("Dados Invalidos!");
+			return false;
+		}
+	}
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+	public String getTipo() {
+		return tipo.getTipo();
+	}
 
-    public double getLimite() {
-        return limite;
-    }
+	public void setTipo(TipoCartao tipo) {
+		this.tipo = tipo;
+	}
 
-    public void setLimite(double limite) {
-        this.limite = limite;
-    }
+	public Conta getConta() {
+		return conta;
+	}
 
-    public int getSenha() {
-        return senha;
-    }
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
 
-    public void setSenha(int senha) {
-        this.senha = senha;
-    }
+	public int getNumero() {
+		return numero;
+	}
 
-    public void setLimiteDisponivel(double limiteDisponivel) {
-        this.limiteDisponivel = limiteDisponivel;
-    }
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
-    public double getLimiteDisponivel() {
-        return limiteDisponivel;
-    }
+	public double getLimite() {
+		return limite;
+	}
 
-    public boolean compraDebito(double valor, String local) {
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
 
-        if (conta.realizaCompra(local, valor)) {
-            String men = String.format("Valor das Passgens:R$%,.2f\n", valor);
-            System.out.println(men + "Compra bem sucedida!");
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "[SALDO INSUFICIENTE]", "Saldo insuficiente", 0);
-        }
-        return false;
-    }
+	public int getSenha() {
+		return senha;
+	}
 
-    public boolean compraCredito(String titular, int numero, double valor, String local) {
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
 
-        if (limiteDisponivel >= valor) {
-            conta.realizaCompra(local, valor);
-            String men = String.format("Valor das Passgens:R$%,.2f\n", valor);
-            System.out.println(men + "Compra bem sucedida!");
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "[LIMITE ATINGIDO]", "Limite atingido", 0);
-            return false;
-        }
-    }
+	public void setLimiteDisponivel(double limiteDisponivel) {
+		this.limiteDisponivel = limiteDisponivel;
+	}
 
-    public boolean autentica(String titular, int numero, int senha) {
-        if (this.senha == senha && this.numero == numero && this.conta.getNomeTitular() == titular) {
-            return true;
-        } else {
-            System.out.println("Dados Invalidos!");
-            return false;
-        }
-    }
+	public double getLimiteDisponivel() {
+		return limiteDisponivel;
+	}
 
 }

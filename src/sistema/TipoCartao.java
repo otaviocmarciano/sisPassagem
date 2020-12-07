@@ -6,20 +6,26 @@
 package sistema;
 
 /**
- *
+ * Tipos de cart�es que podem ser usados.
+ * 
  * @author ocmma
  */
 public enum TipoCartao {
-    DEB("Débito"), CRED("Crédito");
+	DEB("Débito"), CRED("Crédito");
 
-    private final String tipo;
+	private final String tipo;
 
-    TipoCartao(String tipo) {
-        this.tipo = tipo;
-    }
+	/**
+	 * Tipo do Cart�o
+	 * 
+	 * @param tipo
+	 */
+	TipoCartao(String tipo) {
+		this.tipo = tipo;
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
+	public String getTipo() {
+		return tipo;
+	}
 
 }

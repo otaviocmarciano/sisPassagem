@@ -1,5 +1,9 @@
 package sistema;
-
+/**
+ * 
+ * Codigos IATA que podem ser usados
+ *
+ */
 public enum CodigoIATA {
     SBAM("Amapï¿½/AP", 0, 0),
     SWYN("Apuï¿½/AM", 0, 0),
@@ -83,6 +87,10 @@ public enum CodigoIATA {
     private final double latitude;
     private final double longitude;
 
+    /**
+     * Construtor que inicializa um objeto CodigoIATA a partir dos parâmetros cidade, latitude e longitude.
+     * 
+     */
     CodigoIATA(String cidade, double latitude, double longitude) {
         this.cidade = cidade;
         this.latitude = latitude;

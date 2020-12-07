@@ -6,43 +6,52 @@
 package sistema;
 
 /**
- *
+ * Classe que representa uma cidade.
+ * 
  * @author Ot√°vio Camargo Marciano - 201900244
  */
 public class Cidade {
 
-    private String nome;
-    private String estado;
-    private CodigoIATA codigo;
+	private String nome;
+	private String estado;
+	private CodigoIATA codigo;
 
-    public Cidade(String nome, String estado, CodigoIATA codigo) {
-        this.nome = nome;
-        this.estado = estado;
-        this.codigo = codigo;
-    }
+	/**
+	 * Construtor que inicializa o objeto Cidade a partir dos par‚metros nome,
+	 * estado e codigo(CodigoIATA).
+	 * 
+	 * @param nome
+	 * @param estado
+	 * @param codigo
+	 */
+	public Cidade(String nome, String estado, CodigoIATA codigo) {
+		this.nome = nome;
+		this.estado = estado;
+		this.codigo = codigo;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public CodigoIATA getCodigo() {
-        return codigo;
-    }
+	public CodigoIATA getCodigo() {
+		return codigo;
+	}
 
-    public void setCodigo(CodigoIATA codigo) {
-        this.codigo = codigo;
-    }
+	public void setCodigo(CodigoIATA codigo) {
+		this.codigo = codigo;
+	}
 
 }

@@ -9,78 +9,91 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe que representa a conta de uma pessoa.
+ * 
  * @author Ot√°vio Camargo Marciano - 201900244
  */
 public class Conta {
 
-    private String nomeTitular;
-    private int numero;
-    private String tipo;
-    private double saldo;
-    private Cartao cartao;
+	private String nomeTitular;
+	private int numero;
+	private String tipo;
+	private double saldo;
+	private Cartao cartao;
 
-    private List<String> compras = new ArrayList<>();
+	private List<String> compras = new ArrayList<>();
 
-    public Conta() {
+	/**
+	 * Construtor que inicializa o objeto Conta sem par‚metros.
+	 */
+	public Conta() {
 
-    }
+	}
 
-    public Conta(String nomeTitular, int numero, String tipo, double saldo) {
-        this.nomeTitular = nomeTitular;
-        this.numero = numero;
-        this.tipo = tipo;
-        this.saldo = saldo;
+	/**
+	 * Construtor que inicializa o objeto Conta com os par‚metros nomeTitular,
+	 * numero, tipo e saldo.
+	 * 
+	 */
+	public Conta(String nomeTitular, int numero, String tipo, double saldo) {
+		this.nomeTitular = nomeTitular;
+		this.numero = numero;
+		this.tipo = tipo;
+		this.saldo = saldo;
 
-    }
+	}
 
-    public boolean realizaCompra(String local, double valor) {
-        if (valor < this.saldo) {
-            saldo -= valor;
-            compras.add(String.format("[Local realizado a compra:%s - Valor:R$%,.2f", local, valor));
-            return true;
-        }
-        return false;
-    }
+	/**
+	 * MÈtodo que realiza uma compra com os par‚metros local e valor retornando um
+	 * boolean.
+	 */
+	public boolean realizaCompra(String local, double valor) {
+		if (valor < this.saldo) {
+			saldo -= valor;
+			compras.add(String.format("[Local realizado a compra:%s - Valor:R$%,.2f", local, valor));
+			return true;
+		}
+		return false;
+	}
 
-    public String getNomeTitular() {
-        return nomeTitular;
-    }
+	public String getNomeTitular() {
+		return nomeTitular;
+	}
 
-    public void setNomeTitular(String nomeTitular) {
-        this.nomeTitular = nomeTitular;
-    }
+	public void setNomeTitular(String nomeTitular) {
+		this.nomeTitular = nomeTitular;
+	}
 
-    public int getNumero() {
-        return numero;
-    }
+	public int getNumero() {
+		return numero;
+	}
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
+	public String getTipo() {
+		return tipo;
+	}
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-    public double getSaldo() {
-        return saldo;
-    }
+	public double getSaldo() {
+		return saldo;
+	}
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
 
-    public Cartao getCartao() {
-        return cartao;
-    }
+	public Cartao getCartao() {
+		return cartao;
+	}
 
-    public void setCartao(Cartao cartao) {
-        this.cartao = cartao;
-    }
+	public void setCartao(Cartao cartao) {
+		this.cartao = cartao;
+	}
 
 }
